@@ -329,6 +329,7 @@ var config = {
 // merge between together.
 // Destructuring and Restructuring
 {
+	// destrucutre
 	let {
 		name = defaults.name,
 		args = defaults.args,
@@ -339,4 +340,133 @@ var config = {
 			} = {}
 		} = {}
 	} = config;
+
+	// restrucuture
+	config = {
+		name, // concise properties name: name will be the same as name.
+		args: args,
+		special: {
+			returns: {
+				game: game,
+				friends: friends
+			}
+		}
+	}
 }
+
+// Object.assign only extends one level deep.
+
+
+var a = 2;
+var b = 3;
+
+var  o = {
+	a: a,
+	b: b,
+	c: function() {
+
+	}
+}
+
+// extention on ES6
+var a = 2;
+var b = 3;
+
+var o = {
+	a, //concise property
+	b,
+	c() { // concise method
+
+	}
+}
+
+
+var counter = 0;
+var o = {
+	c() { // concise method
+
+		counter++;
+		if( counter < 10){
+		  this.c()
+		}
+		console.log("hi")
+	}
+}
+
+o.c();
+
+
+//-----------
+
+var a = 2;
+var b = 3;
+var c = "hello";
+
+var o = {
+	a, //concise property
+	b,
+	c() { // concise method
+
+	},
+	[c]: 2 // computer property
+};
+
+o.hello;
+
+var a = 2;
+var b = 3;
+var c = "hello";
+
+var o = {
+	a, //concise property
+	b,
+	c() { // concise method
+		return 2;
+	},
+	["hello"]: 32, // computed property
+	["hello" + "joke"]: 32, // computed property
+	[foobar().toLowerCase()]: 32 // computed property
+	["methodName"]() {
+	}
+};
+
+console.log( o.hello );
+console.log( o.hello );
+
+
+//----------------------
+
+//Getters
+
+var o = {
+	get x() {
+		return this.__x;
+	},
+
+	set x(val) {
+		this.__x = val;
+	}
+};
+o.x
+o.x = 12
+
+
+
+// Concise Generator
+var o = {
+	*foo() {
+		//....
+	}
+}
+
+
+var xyz = "hello";
+var o = {
+	*[xyz]() {
+		//....
+	}
+}
+
+var it = o.hello();
+
+//---------------------
