@@ -40,3 +40,71 @@ foo(x => {
 	console.log(x);
 	return x * 2;
 });
+
+// use arrow function is not about saving characters.
+
+var o = {
+	id: "kyle",
+	foo() {
+		setTimeout(function() {
+			console.log(this.id)
+		}, 1000);
+	}
+}
+
+// solve
+
+// context
+var o = {
+	id: "kyle",
+	foo() {
+		var contex = this;
+		setTimeout(function() {
+			console.log(context.id)
+		}, 1000);
+	}
+}
+
+// bind
+var o = {
+	id: "kyle",
+	foo() {
+		var contex = this;
+		setTimeout(function() {
+			console.log(this.id)
+		}.bind(this), 1000);
+	}
+}
+
+// arrow functions -- arrow function doesn't have this keyword
+// you can't bind to the arrow function as well because it doesn't have a this.
+// Arrow function you can't use an arguments keyword
+// this, arguments, super, new.target doesn't exist in arrow function, it will go up lexiclly in scope
+// arrow function is getting a closure over the variables.
+var o = {
+	id: "kyle",
+	foo() {
+		var contex = this;
+		setTimeout(() => {
+			console.log(this.id)
+		}, 1000);
+	}
+}
+
+o.foo(1, 2, 3) // kyle [1,2,3]
+
+
+//-------------------
+// this will go outside scope which is global scope
+// never do it.
+var o = {
+	id: "kyle",
+	foo: () => {
+		var contex = this;
+		setTimeout(() => {
+			console.log(this.id)
+		}, 1000);
+	}
+}
+
+o.foo(1, 2, 3) // kyle [1,2,3]
