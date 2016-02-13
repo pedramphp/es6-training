@@ -108,3 +108,6 @@ var o = {
 }
 
 o.foo(1, 2, 3) // kyle [1,2,3]
+
+//------------------
+//The arrow syntax is a shortform for anonymous function, so you can't have a named arrow functions
