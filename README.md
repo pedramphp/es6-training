@@ -7,3 +7,5 @@ YouDontKnowJS.com
 MakerSquare
 
 https://babeljs.io/repl/
+
++ read more on Async and Generators.
